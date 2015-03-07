@@ -113,7 +113,7 @@ public class DecoderSequential {
 				System.out.println("TotalReadBytes: " + totalReadBytes);
 				
 				for (int i = 0; i < readBytes * Defines.bitsCodification ; i++) {
-					try {
+//					try {
 						codificationArrayIndex <<= 1;
 						if (BitUtility.checkBit(bufferInput, i) == false)
 							codificationArrayIndex += 1;
@@ -134,14 +134,15 @@ public class DecoderSequential {
 									outputStream.write(bufferOutput, 0, bufferOutputIndex);
 								}
 								inputStream.close();
+								break;
 							}
 						}
-					} catch(Exception exception) {
-						System.out.println(String.format("Número de bytes que já li: %d", totalReadBytes));
-						System.out.println(String.format("Estou neste byte: %d", totalReadBytes + i/8));
-						System.out.println(String.format("i: %d", i));
-						return;
-					}
+//					} catch(Exception exception) {
+//						System.out.println(String.format("Número de bytes que já li: %d", totalReadBytes));
+//						System.out.println(String.format("Estou neste byte: %d", totalReadBytes + i/8));
+//						System.out.println(String.format("i: %d", i));
+//						return;
+//					}
 				}
 			} while (readBytes > 0);
 		}
