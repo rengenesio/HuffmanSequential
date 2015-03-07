@@ -12,18 +12,19 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		Configuration conf = new Configuration();
 		FileSystem fs = FileSystem.get(conf);
-		System.out.println("aaaaaaaaaaaaaaaaaaaaa");
-		String compressedPath = args[0];
-		String decompressedFileName = args[1];
+		
+		String fileName = args[0];
+		String pathSuffix = args[1];
 		
 		long totalTime, startTime, endTime;
 		
 		try {
-			fs.delete(new Path(decompressedFileName), true);
+			fs.delete(new Path(fileName + "." + pathSuffix + "/sequentialdecompressed"), true);
 		} catch(Exception ex) { }
 		
 		startTime = System.nanoTime();
-		new DecoderSequential(compressedPath, decompressedFileName);
+		DecoderSequential decoderSequential = new DecoderSequential(fileName, pathSuffix);
+		decoderSequential.Decode();
 		endTime = System.nanoTime();
 		System.out.println("Descompressão completa!");
 			
