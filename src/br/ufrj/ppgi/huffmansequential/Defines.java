@@ -6,7 +6,7 @@ public class Defines {
 	
 	
 	// Compression performance defines
-	public static final int readBufferSize = 1;
+	public static final int readBufferSize = 16384;
 	public static final int writeBufferSize = 16384;
 	
 //	// Huffman algorithm constants
