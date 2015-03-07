@@ -45,7 +45,7 @@ public class DecoderSequential {
 System.out.println(fileName + "." + pathSuffix + "/codification");
 		byte[] byteArray = new byte[inputStream.available()];
 		inputStream.readFully(byteArray);
-
+System.out.println(byteArray.length);
 		this.codificationArray = SerializationUtility.deserializeCodificationArray(byteArray);
 		
 		///*
