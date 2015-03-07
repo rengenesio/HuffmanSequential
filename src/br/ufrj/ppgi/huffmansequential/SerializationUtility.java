@@ -6,8 +6,6 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import br.ufrj.ppgi.huffmansequential.Codification;
-
 
 public class SerializationUtility {
 
@@ -72,21 +70,21 @@ public class SerializationUtility {
 		//System.arraycopy(byteArray, 0, frequencyArray, 0, byteArray.length);
 		
 		int index = 0;
-		for(int i = 0 ; i < byteArray.length ; i += Defines.bitsCodification) {
+		for(int i = 0 ; i < byteArray.length ; i += 8) {
 			frequencyArray[index] += (byteArray[i] & 0xFF);
-			frequencyArray[index] <<= Defines.bitsCodification;
+			frequencyArray[index] <<= 8;
 			frequencyArray[index] += (byteArray[i+1] & 0xFF);
-			frequencyArray[index] <<= Defines.bitsCodification;
+			frequencyArray[index] <<= 8;
 			frequencyArray[index] += (byteArray[i+2] & 0xFF);
-			frequencyArray[index] <<= Defines.bitsCodification;
+			frequencyArray[index] <<= 8;
 			frequencyArray[index] += (byteArray[i+3] & 0xFF);
-			frequencyArray[index] <<= Defines.bitsCodification;
+			frequencyArray[index] <<= 8;
 			frequencyArray[index] += (byteArray[i+4] & 0xFF);
-			frequencyArray[index] <<= Defines.bitsCodification;
+			frequencyArray[index] <<= 8;
 			frequencyArray[index] += (byteArray[i+5] & 0xFF);
-			frequencyArray[index] <<= Defines.bitsCodification;
+			frequencyArray[index] <<= 8;
 			frequencyArray[index] += (byteArray[i+6] & 0xFF);
-			frequencyArray[index] <<= Defines.bitsCodification;
+			frequencyArray[index] <<= 8;
 			frequencyArray[index] += (byteArray[i+7] & 0xFF);
 
 			index++;
