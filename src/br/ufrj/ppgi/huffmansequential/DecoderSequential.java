@@ -97,9 +97,9 @@ public class DecoderSequential {
 		
 		// Buffer to store read from disk
 		byte[] bufferInput = new byte[Defines.readBufferSize];
-
-		int codificationArrayIndex = 0;
+		
 		for(FileStatus fileStatus : this.fileSystem.listStatus(pathIn)) {
+			int codificationArrayIndex = 0;
 			int readBytes = 0;
 			int totalReadBytes = 0;
 			
