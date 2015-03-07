@@ -113,38 +113,33 @@ public class DecoderSequential {
 				System.out.println("TotalReadBytes: " + totalReadBytes);
 				
 				for (int i = 0; i < readBytes * Defines.bitsCodification ; i++) {
-//					try {
-						codificationArrayIndex <<= 1;
-						if (BitUtility.checkBit(bufferInput, i) == false)
-							codificationArrayIndex += 1;
-						else
-							codificationArrayIndex += 2;
-		
-						if (codificationArrayElementUsed[codificationArrayIndex]) {
-							if (codificationArrayElementSymbol[codificationArrayIndex] != 0) {
-								bufferOutput[bufferOutputIndex++] = codificationArrayElementSymbol[codificationArrayIndex];
-								
-								if(bufferOutputIndex >= Defines.writeBufferSize) {
-									outputStream.write(bufferOutput, 0, bufferOutputIndex);
-									bufferOutputIndex = 0;
-								}
-								codificationArrayIndex = 0;
-							} else {
-								if(bufferOutputIndex > 0) {
-									outputStream.write(bufferOutput, 0, bufferOutputIndex);
-								}
-								inputStream.close();
-								break;
+					codificationArrayIndex <<= 1;
+					if (BitUtility.checkBit(bufferInput, i) == false)
+						codificationArrayIndex += 1;
+					else
+						codificationArrayIndex += 2;
+	
+					if (codificationArrayElementUsed[codificationArrayIndex]) {
+						if (codificationArrayElementSymbol[codificationArrayIndex] != 0) {
+							bufferOutput[bufferOutputIndex++] = codificationArrayElementSymbol[codificationArrayIndex];
+							
+							if(bufferOutputIndex >= Defines.writeBufferSize) {
+								outputStream.write(bufferOutput, 0, bufferOutputIndex);
+								bufferOutputIndex = 0;
 							}
+							codificationArrayIndex = 0;
+						} else {
+							if(bufferOutputIndex > 0) {
+								outputStream.write(bufferOutput, 0, bufferOutputIndex);
+							}
+							//inputStream.close();
+							break;
 						}
-//					} catch(Exception exception) {
-//						System.out.println(String.format("Número de bytes que já li: %d", totalReadBytes));
-//						System.out.println(String.format("Estou neste byte: %d", totalReadBytes + i/8));
-//						System.out.println(String.format("i: %d", i));
-//						return;
-//					}
+					}
 				}
 			} while (readBytes > 0);
+			
+			inputStream.close();
 		}
 		
 		outputStream.close();
