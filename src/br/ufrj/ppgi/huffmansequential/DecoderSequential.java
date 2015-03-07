@@ -104,7 +104,6 @@ public class DecoderSequential {
 			int totalReadBytes = 0;
 			
 			FSDataInputStream inputStream = fileSystem.open(fileStatus.getPath());
-			System.out.println(fileStatus.toString());
 			
 			do {
 				readBytes = inputStream.read(totalReadBytes, bufferInput, 0, (totalReadBytes + Defines.readBufferSize > inputStream.available() ? inputStream.available() : Defines.readBufferSize));
