@@ -34,10 +34,13 @@ public class DecoderSequential {
 		
 		// Initializes HDFS access object
 		this.fileSystem = FileSystem.get(this.configuration);
-		
+		System.out.println("aaaaa");
 		fileToCodification();
+		System.out.println("aaaaa");
 		codeToTreeArray();
+		System.out.println("aaaaa");
 		huffmanDecompressor();
+		System.out.println("aaaaa");
 	}
 
 	public void fileToCodification() throws IOException {
