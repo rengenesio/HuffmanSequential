@@ -12,7 +12,7 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		Configuration conf = new Configuration();
 		FileSystem fs = FileSystem.get(conf);
-		
+		System.out.println("aaaaaaaaaaaaaaaaaaaaa");
 		String compressedPath = args[0];
 		String decompressedFileName = args[1];
 		
