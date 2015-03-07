@@ -99,10 +99,10 @@ public class DecoderSequential {
 		// Buffer to store read from disk
 		byte[] bufferInput = new byte[Defines.readBufferSize];
 
+		int codificationArrayIndex = 0;
 		for(FileStatus fileStatus : this.fileSystem.listStatus(pathIn)) {
 			int readBytes = 0;
 			int totalReadBytes = 0;
-			int codificationArrayIndex = 0;
 			
 			FSDataInputStream inputStream = fileSystem.open(fileStatus.getPath());
 			System.out.println(fileStatus.toString());
