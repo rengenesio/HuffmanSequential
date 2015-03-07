@@ -47,11 +47,11 @@ public class DecoderSequential {
 
 		this.codificationArray = SerializationUtility.deserializeCodificationArray(byteArray);
 
-		///*
+		/*
 		System.out.println("CODIFICATION: symbol (size) code"); 
 		for(short i = 0 ; i < codificationArray.length ; i++)
 			System.out.println(codificationArray[i].toString());
-		//*/
+		*/
 	}
 
 	public void codeToTreeArray() {
@@ -88,7 +88,6 @@ public class DecoderSequential {
 	
 	public void huffmanDecompressor() throws IOException {
 		Path pathIn = new Path(this.fileName + "." + this.pathSuffix + "/compressed/");
-		System.out.println(this.fileName + "." + this.pathSuffix + "/compressed/");
 		Path pathOut = new Path(this.fileName + "." + this.pathSuffix + "/sequentialdecompressed");
 		FSDataOutputStream outputStream = fileSystem.create(pathOut);
 		
@@ -110,7 +109,6 @@ public class DecoderSequential {
 			do {
 				readBytes = inputStream.read(totalReadBytes, bufferInput, 0, (totalReadBytes + Defines.readBufferSize > inputStream.available() ? inputStream.available() : Defines.readBufferSize));
 				totalReadBytes += readBytes;
-				System.out.println("TotalReadBytes: " + totalReadBytes);
 				
 				for (int i = 0; i < readBytes * Defines.bitsCodification ; i++) {
 					codificationArrayIndex <<= 1;
