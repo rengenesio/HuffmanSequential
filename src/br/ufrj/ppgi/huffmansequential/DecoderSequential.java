@@ -87,7 +87,7 @@ public class DecoderSequential {
 	
 	
 	public void huffmanDecompressor() throws IOException {
-		Path pathIn = new Path(this.fileName + "." + this.pathSuffix + "/compressed");
+		Path pathIn = new Path(this.fileName + "." + this.pathSuffix + "/compressed/");
 		
 		Path pathOut = new Path(this.fileName + "." + this.pathSuffix + "/sequentialdecompressed");
 		FSDataOutputStream outputStream = fileSystem.create(pathOut);
