@@ -108,8 +108,8 @@ public class DecoderSequential {
 			System.out.println(fileStatus.toString());
 			
 			do {
-				//readBytes = inputStream.read(totalReadBytes, bufferInput, 0, (totalReadBytes + Defines.readBufferSize > inputStream.available() ? inputStream.available() : Defines.readBufferSize));
-				System.out.println("ReadBytes: " + readBytes);
+				readBytes = inputStream.read(totalReadBytes, bufferInput, 0, (totalReadBytes + Defines.readBufferSize > inputStream.available() ? inputStream.available() : Defines.readBufferSize));
+				//System.out.println("ReadBytes: " + readBytes);
 				totalReadBytes += readBytes;
 				//System.out.println("TotalReadBytes: " + totalReadBytes);
 				
