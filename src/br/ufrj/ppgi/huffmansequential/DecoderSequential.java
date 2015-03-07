@@ -12,7 +12,6 @@ import org.apache.hadoop.fs.Path;
 
 public class DecoderSequential {
 	Codification[] codificationArray;
-	short symbols = 0;
 	byte max_code = 0;
 	Path in, out, cb;
 	byte[] codificationArrayElementSymbol;
@@ -47,15 +46,10 @@ public class DecoderSequential {
 		inputStream.readFully(byteArray);
 
 		this.codificationArray = SerializationUtility.deserializeCodificationArray(byteArray);
-		System.out.println(byteArray[0]);
-		System.out.println(byteArray[1]);
-		System.out.println(byteArray[2]);
-		System.out.println(byteArray[3]);
-		System.out.println(byteArray[4]);
-		System.out.println(byteArray[5]);
+
 		///*
 		System.out.println("CODIFICATION: symbol (size) code"); 
-		for(short i = 0 ; i < symbols ; i++)
+		for(short i = 0 ; i < codificationArray.length ; i++)
 			System.out.println(codificationArray[i].toString());
 		//*/
 	}
