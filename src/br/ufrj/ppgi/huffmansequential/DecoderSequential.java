@@ -42,7 +42,7 @@ public class DecoderSequential {
 
 	public void fileToCodification() throws IOException {
 		FSDataInputStream inputStream = fileSystem.open(new Path(fileName + "." + pathSuffix + "/codification"));
-
+System.out.println(fileName + "." + pathSuffix + "/codification");
 		byte[] byteArray = new byte[inputStream.available()];
 		inputStream.readFully(byteArray);
 
