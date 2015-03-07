@@ -23,18 +23,18 @@ public class DecoderSequential {
 	String fileName;
 	String pathSuffix;
 
-	public DecoderSequential(String fileName, String pathSuffix) {
+	public DecoderSequential(String fileName, String pathSuffix) throws IOException {
 		this.fileName = fileName;
 		this.pathSuffix = pathSuffix;
-	}
-	
-	public void Decode() throws IOException {
+		
 		// YARN configuration
 		this.configuration = new Configuration();
 		
 		// Initializes HDFS access object
 		this.fileSystem = FileSystem.get(this.configuration);
-
+	}
+	
+	public void Decode() throws IOException {
 		fileToCodification();
 		codeToTreeArray();
 		huffmanDecompressor();
@@ -42,12 +42,17 @@ public class DecoderSequential {
 
 	public void fileToCodification() throws IOException {
 		FSDataInputStream inputStream = fileSystem.open(new Path(fileName + "." + pathSuffix + "/codification"));
-System.out.println(fileName + "." + pathSuffix + "/codification");
+
 		byte[] byteArray = new byte[inputStream.available()];
 		inputStream.readFully(byteArray);
-System.out.println(byteArray.length);
+
 		this.codificationArray = SerializationUtility.deserializeCodificationArray(byteArray);
-		
+		System.out.println(byteArray[0]);
+		System.out.println(byteArray[1]);
+		System.out.println(byteArray[2]);
+		System.out.println(byteArray[3]);
+		System.out.println(byteArray[4]);
+		System.out.println(byteArray[5]);
 		///*
 		System.out.println("CODIFICATION: symbol (size) code"); 
 		for(short i = 0 ; i < symbols ; i++)
