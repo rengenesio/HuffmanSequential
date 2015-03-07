@@ -108,7 +108,9 @@ public class DecoderSequential {
 			
 			do {
 				readBytes = inputStream.read(totalReadBytes, bufferInput, 0, (totalReadBytes + Defines.readBufferSize > inputStream.available() ? inputStream.available() : Defines.readBufferSize));
+				System.out.println("ReadBytes: " + readBytes);
 				totalReadBytes += readBytes;
+				System.out.println("TotalReadBytes: " + totalReadBytes);
 				
 				for (int i = 0; i < readBytes * Defines.bitsCodification ; i++) {
 					codificationArrayIndex <<= 1;
