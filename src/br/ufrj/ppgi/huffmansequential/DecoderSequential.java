@@ -130,7 +130,6 @@ public class DecoderSequential {
 							if(bufferOutputIndex > 0) {
 								outputStream.write(bufferOutput, 0, bufferOutputIndex);
 							}
-							//inputStream.close();
 							break;
 						}
 					}
